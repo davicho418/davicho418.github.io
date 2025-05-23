@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Árbol Interactivo</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .nested {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .button {
+            cursor: pointer;
+            background-color: #82b562;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="treeMenu">
+        <li><button class="button">A1 - Unidad de generación 1</button>
+            <ul class="nested">
+                <li><button class="button">A1.RA1 - Generador</button>
+                    <ul class="nested">
+                        <li>A1.RA1.RK1 - Estator</li>
+                        <li>A1.RA1.LD1 - Sistema de excitación</li>
+                        <li>A1.RA1.LE1 - Sistema de medición</li>
+                        <li>A1.RA1.HE1 - Sistema de refrigeración</li>
+                    </ul>
+                </li>
+                <li><button class="button">A1.RB1 - Turbina</button>
+                    <ul class="nested">
+                        <li>A1.RB1.LD1 - Sistema de regulación</li>
+                        <li>A1.RB1.KA1 - Sistema de control de flujo</li>
+                    </ul>
+                </li>
+                <li><button class="button">A1.JF1 - Eje</button>
+                    <ul class="nested">
+                        <li>A1.JF1.KJ1 - Cojinete superior</li>
+                        <li>A1.JF1.KJ2 - Cojinete inferior</li>
+                        <li>A1.JF1.KJ2 - Cojinete turbina</li>
+                        <li>A1.JF1.KJ2 - Cojinete empuje</li>
+                    </ul>
+                </li>
+                <li><button class="button">A1.KA1 - Válvula de entrada principal</button>
+                    <ul class="nested">
+                        <li>A1.KA1.KA1 - Válvula mariposa</li></li>
+                        <li>A1.KA1.JB1 - Válvula bypass</li>
+                    </ul>
+                </li>
+                <li><button class="button">A1.JE1 - Sistema de potencia</button>
+                    <ul class="nested">
+                        <li>A1.JE1.KF1 - Transformador</li>
+                    </ul>
+                </li>
+                <li>A1.LA1 - Control local
+                </li>
+                <li>A1.P@# - Sistema de protección
+                </li>
+            </ul>
+        </li>
+        <li><button class="button">A2 - Unidad de generación 2</button>
+            <ul class="nested">
+                <li>(Igual que la unidad de generación 1.)</li>
+            </ul>
+        </li>
+        <li><button class="button">B - Sistema de transmisión</button>
+            <ul class="nested">
+                <li><button class="button">B010.JE1 - Switchgear 10KV</button>
+                    <ul class="nested">
+                        <li>B010.JE1.KF1 - Transformador</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li><button class="button">C - Cursos de agua</button>
+            <ul class="nested">
+                <li>C1.PF1 - Forebay</li>
+                <li>C1.KC1 - Desarenador</li>
+                <li>C1.JB1 - Túnel</li>
+                <li>C1.JB2 - Tubería forzada</li>
+            </ul>
+        </li>
+        <li><button class="button">D - Sistemas auxiliares</button>
+            <ul class="nested">
+                <li>D1 - Suministro local</li>
+                <li>D2 - Suministro de refrigeración </li>
+                <li>D12 - Sistema contra incendios </li>
+                <li>D40 - Sistemas periféricos de monitoreo </li>
+            </ul>
+        </li>
+        <li><button class="button">E - Reservorios</button>
+            <ul class="nested">
+                <li>E1 - Reservorio 1</li>
+                <li>E2 - Reservorio 2</li>
+            </ul>
+        </li>
+        <li><button class="button">F - Control de la planta</button>
+            <ul class="nested">
+                <li>F1.AA40 - AGC</li>
+                <li>F1.AA50 - SCADA</li>
+            </ul>
+        </li>
+        <li><button class="button">H - Sistema de salida del agua</button>
+            <ul class="nested">
+                <li>H1 - Salida</li>
+                <li>H2 - Sistema de drenaje</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var buttons = document.getElementsByClassName("button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", function() {
+                    var nestedList = this.nextElementSibling;
+                    nestedList.classList.toggle("active");
+                });
+            }
+        });
+    </script>
+</body>
+</html>
